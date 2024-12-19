@@ -5,14 +5,19 @@ import GeoJSON from "ol/format/GeoJSON";
 export const loadLayer = async (getData, style, title, visible = true) => {
   const response = await getData();
 
-  if (
-    response.type !== "FeatureCollection" ||
-    !Array.isArray(response.features)
-  ) {
-    throw new Error("La respuesta de la API no es un FeatureCollection válido");
+  let features;
+  if (response.type === "FeatureCollection" && Array.isArray(response.features)) {
+    features = response.features;
+  } else if (Array.isArray(response)) {
+    // Transformar el array de objetos en features de GeoJSON
+    features = response.map((item) => ({
+      type: "Feature",
+      geometry: item.geom,
+      properties: { ...item },
+    }));
+  } else {
+    throw new Error("La respuesta de la API no es un vector válido");
   }
-
-  const features = response.features.map((feature) => feature);
 
   const vectorSource = new VectorSource({
     features: new GeoJSON().readFeatures(

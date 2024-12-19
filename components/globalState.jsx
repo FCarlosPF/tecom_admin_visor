@@ -8,6 +8,9 @@ const initialState = {
   loading: true,
   loadingLayerName: "",
   layers: [],
+  empleados: [],
+  idProyecto: null,
+  idResponsableProyecto: null,
 };
 
 // Define reducer
@@ -22,13 +25,19 @@ const reducer = (state, action) => {
     case "TOGGLE_LAYER_VISIBILITY":
       return {
         ...state,
-        layers: state.layers.map(layer => {
+        layers: state.layers.map((layer) => {
           if (layer.get("title") === action.payload.layerTitle) {
             layer.setVisible(action.payload.visibility);
           }
           return layer;
-        })
+        }),
       };
+    case "SET_EMPLEADOS":
+      return { ...state, empleados: action.payload };
+    case "SET_ID_PROYECTO":
+      return { ...state, idProyecto: action.payload };
+    case "SET_ID_RESPONSABLE_PROYECTO":
+      return { ...state, idResponsableProyecto: action.payload };
     default:
       return state;
   }

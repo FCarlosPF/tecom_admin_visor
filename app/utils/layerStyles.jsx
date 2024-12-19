@@ -1,17 +1,41 @@
-import { Style, Stroke } from "ol/style";
-
+import { Style, Stroke, Text } from "ol/style";
+import Fill from "ol/style/Fill";
+import Circle from "ol/style/Circle"
+import CircleStyle from "ol/style/Circle";
 export const oficinaStyle = new Style({
   stroke: new Stroke({
     color: "#4A90E2", // Azul claro
     width: 3,
   }),
+  zIndex: 1, // Establecer un zIndex mayor
+
 });
 
-export const oficina2Style = new Style({
-  stroke: new Stroke({
-    color: "green", // Azul claro
-    width: 3,
+export const empleadoStyle = new Style({
+  image: new Circle({
+    radius: 10,
+    fill: new Fill({
+      color: "#00FF00", // Verde por defecto
+    }),
+    stroke: new Stroke({
+      color: "#black", // Un color de borde llamativo (rojo oscuro)
+      width: 2, // Un borde más grueso
+    }),
   }),
+  text: new Text({
+    font: '10px Calibri,sans-serif',
+    fill: new Fill({
+      color: '#fff', // Color del texto (blanco)
+    }),
+    stroke: new Stroke({
+      color: '#000', // Color del borde del texto (negro)
+      width: 3,
+    }),
+    text: '', // Este valor se establecerá dinámicamente
+    offsetX: 25, // Desplazar el texto a la derecha
+    offsetY: -15, // Desplazar el texto hacia arriba
+  }),
+  zIndex: 10, // Establecer un zIndex mayor
 });
 
 export const oficina3Style = new Style({
@@ -19,6 +43,8 @@ export const oficina3Style = new Style({
     color: "red", // Azul claro
     width: 3,
   }),
+  zIndex: 1, // Establecer un zIndex mayor
+
 });
 
 
@@ -27,4 +53,18 @@ export const oficina4Style = new Style({
     color: "purple", // Azul claro
     width: 3,
   }),
+  zIndex: 1, // Establecer un zIndex mayor
+
 });
+
+export const createCircleStyle = () => {
+  return new Style({
+    image: new CircleStyle({
+      radius: 20,
+      fill: new Fill({ color: 'rgba(255, 0, 0, 0.5)' }),
+      stroke: new Stroke({ color: 'red', width: 2 }),
+    }),
+    zIndex: 1000, // Agregar zIndex mayor
+
+  });
+};
