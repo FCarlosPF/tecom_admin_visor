@@ -1,4 +1,6 @@
 export const getOficina = async () => {
+  const accessToken = localStorage.getItem("accessToken");
+
     try {
       const response = await fetch(
         `http://127.0.0.1:8000/api/oficinas/`,
@@ -6,6 +8,8 @@ export const getOficina = async () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`, // Incluye el token de acceso en los encabezados
+
           },
         }
       );
@@ -24,6 +28,8 @@ export const getOficina = async () => {
   };
 
   export const getEmpleados = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+
     try {
       const response = await fetch(
         `http://127.0.0.1:8000/api/vista-empleados-tareas/`,
@@ -31,6 +37,8 @@ export const getOficina = async () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`, // Incluye el token de acceso en los encabezados
+
           },
         }
       );
@@ -51,6 +59,8 @@ export const getOficina = async () => {
   };
 
   export const getTasKToEmployee = async (employeeId) => {
+    const accessToken = localStorage.getItem("accessToken");
+
     try {
       const response = await fetch(
         `http://127.0.0.1:8000/api/tareas/empleado/${employeeId}/`,
@@ -58,6 +68,8 @@ export const getOficina = async () => {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${accessToken}`, // Incluye el token de acceso en los encabezados
+
           },
         }
       );
@@ -78,11 +90,15 @@ export const getOficina = async () => {
   };
 
   export const getProyectos = async () => {
+    const accessToken = localStorage.getItem("accessToken");
+
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/proyectos/`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`, // Incluye el token de acceso en los encabezados
+
         },
       });
   
