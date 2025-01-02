@@ -105,3 +105,37 @@ export const getProyectos = async () => {
     throw error;
   }
 };
+
+export const descargarReporteExcel = async () => {
+
+  const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1ODY2MTMxLCJpYXQiOjE3MzU4NDgxMzEsImp0aSI6IjI0NjE4ODZkODdiZDRlNWRhNzkyZGE0OWVlNDkzYjFmIiwidXNlcl9pZCI6MX0.1pnpKqUUDsksERWKewRA_F8Yj4HS52SbSfP0Sg9qif0';
+
+  try {
+    const response = await fetch(
+      "http://127.0.0.1:8000/api/reporte-tareas-no-entregadas-a-tiempo/",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type":
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          Authorization: `Bearer ${accessToken}`, // Incluye el token de acceso en los encabezados
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Error al descargar el reporte");
+    }
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "reporte-tareas-no-entregadas-a-tiempo.xlsx";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  } catch (error) {
+    console.error("Error al descargar el reporte:", error);
+  }
+};

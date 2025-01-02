@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-import { FaCog } from "react-icons/fa";
+import { FaFileAlt, FaCog } from "react-icons/fa";
 import { GlobalContext } from "./globalState";
-import { getProyectos } from "@/services";
+import { descargarReporteExcel, getProyectos } from "@/services";
 
 const TopBar = ({ handleConfigClick }) => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -43,6 +43,14 @@ const TopBar = ({ handleConfigClick }) => {
     }
   };
 
+  const handleReportClick = async () => {
+    try {
+      await descargarReporteExcel();
+      console.log("Reporte descargado con éxito.");
+    } catch (error) {
+      console.error("Error al descargar el reporte:", error);
+    }
+  };
 
   return (
     <div className="w-full bg-gray-800 text-white p-2 flex justify-between items-center z-50 h-[70px]">
@@ -65,6 +73,13 @@ const TopBar = ({ handleConfigClick }) => {
           <span>Cargando capa: {loadingLayerName}</span>
         </div>
       )}
+      <button
+        onClick={handleReportClick}
+        className="ml-2 bg-gray-700 text-white p-3 me-4 rounded cursor-pointer text-lg"
+        style={{ fontSize: "1.5rem" }}
+      >
+        <FaFileAlt size={24} />
+      </button>
       <button
         onClick={handleConfigClick}
         className="ml-2 bg-gray-700 text-white p-3 rounded text-lg"
