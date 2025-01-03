@@ -1,6 +1,6 @@
 export const getOficina = async () => {
   try {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1ODY2MTMxLCJpYXQiOjE3MzU4NDgxMzEsImp0aSI6IjI0NjE4ODZkODdiZDRlNWRhNzkyZGE0OWVlNDkzYjFmIiwidXNlcl9pZCI6MX0.1pnpKqUUDsksERWKewRA_F8Yj4HS52SbSfP0Sg9qif0';
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTMxMTU4LCJpYXQiOjE3MzU5MTMxNTgsImp0aSI6ImNhOWYwZWQyMzdjYzQ5ZDRiN2ViZWE1YzQzZDI5YWZjIiwidXNlcl9pZCI6MX0.RS5GeV68sTGiJtMFfc6cHP-aOPWGGqMjCgmpGsO-_rE';
     const response = await fetch(
       `http://127.0.0.1:8000/api/oficinas/`,
       {
@@ -27,7 +27,7 @@ export const getOficina = async () => {
 
 export const getEmpleados = async () => {
   try {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1ODY2MTMxLCJpYXQiOjE3MzU4NDgxMzEsImp0aSI6IjI0NjE4ODZkODdiZDRlNWRhNzkyZGE0OWVlNDkzYjFmIiwidXNlcl9pZCI6MX0.1pnpKqUUDsksERWKewRA_F8Yj4HS52SbSfP0Sg9qif0';
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTMxMTU4LCJpYXQiOjE3MzU5MTMxNTgsImp0aSI6ImNhOWYwZWQyMzdjYzQ5ZDRiN2ViZWE1YzQzZDI5YWZjIiwidXNlcl9pZCI6MX0.RS5GeV68sTGiJtMFfc6cHP-aOPWGGqMjCgmpGsO-_rE';
     const response = await fetch(
       `http://127.0.0.1:8000/api/vista-empleados-tareas/`,
       {
@@ -56,7 +56,7 @@ export const getEmpleados = async () => {
 
 export const getTasKToEmployee = async (employeeId) => {
   try {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1ODY2MTMxLCJpYXQiOjE3MzU4NDgxMzEsImp0aSI6IjI0NjE4ODZkODdiZDRlNWRhNzkyZGE0OWVlNDkzYjFmIiwidXNlcl9pZCI6MX0.1pnpKqUUDsksERWKewRA_F8Yj4HS52SbSfP0Sg9qif0';
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTMxMTU4LCJpYXQiOjE3MzU5MTMxNTgsImp0aSI6ImNhOWYwZWQyMzdjYzQ5ZDRiN2ViZWE1YzQzZDI5YWZjIiwidXNlcl9pZCI6MX0.RS5GeV68sTGiJtMFfc6cHP-aOPWGGqMjCgmpGsO-_rE';
     const response = await fetch(
       `http://127.0.0.1:8000/api/tareas/empleado/${employeeId}/`,
       {
@@ -85,7 +85,7 @@ export const getTasKToEmployee = async (employeeId) => {
 
 export const getProyectos = async () => {
   try {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1ODY2MTMxLCJpYXQiOjE3MzU4NDgxMzEsImp0aSI6IjI0NjE4ODZkODdiZDRlNWRhNzkyZGE0OWVlNDkzYjFmIiwidXNlcl9pZCI6MX0.1pnpKqUUDsksERWKewRA_F8Yj4HS52SbSfP0Sg9qif0';
+    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTMxMTU4LCJpYXQiOjE3MzU5MTMxNTgsImp0aSI6ImNhOWYwZWQyMzdjYzQ5ZDRiN2ViZWE1YzQzZDI5YWZjIiwidXNlcl9pZCI6MX0.RS5GeV68sTGiJtMFfc6cHP-aOPWGGqMjCgmpGsO-_rE';
     const response = await fetch(`http://127.0.0.1:8000/api/proyectos/`, {
       method: "GET",
       headers: {
@@ -108,7 +108,7 @@ export const getProyectos = async () => {
 
 export const descargarReporteExcel = async () => {
 
-  const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1ODY2MTMxLCJpYXQiOjE3MzU4NDgxMzEsImp0aSI6IjI0NjE4ODZkODdiZDRlNWRhNzkyZGE0OWVlNDkzYjFmIiwidXNlcl9pZCI6MX0.1pnpKqUUDsksERWKewRA_F8Yj4HS52SbSfP0Sg9qif0';
+  const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTMxMTU4LCJpYXQiOjE3MzU5MTMxNTgsImp0aSI6ImNhOWYwZWQyMzdjYzQ5ZDRiN2ViZWE1YzQzZDI5YWZjIiwidXNlcl9pZCI6MX0.RS5GeV68sTGiJtMFfc6cHP-aOPWGGqMjCgmpGsO-_rE';
 
   try {
     const response = await fetch(
