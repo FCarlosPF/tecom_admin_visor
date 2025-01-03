@@ -38,23 +38,26 @@ export const empleadoStyle = new Style({
   zIndex: 10, // Establecer un zIndex mayor
 });
 
-export const oficina3Style = new Style({
+export const areasStyle = new Style({
   stroke: new Stroke({
-    color: "red", // Azul claro
+    color: "yellow", // Azul claro
     width: 3,
   }),
-  zIndex: 1, // Establecer un zIndex mayor
-
-});
-
-
-export const oficina4Style = new Style({
-  stroke: new Stroke({
-    color: "purple", // Azul claro
-    width: 3,
+  text: new Text({
+    font: '12px Calibri,sans-serif',
+    fill: new Fill({
+      color: '#fff',
+    }),
+    stroke: new Stroke({
+      color: '#000',
+      width: 3,
+    }),
+    textBaseline: 'bottom', // Colocar el texto arriba del feature
+    textAlign: 'left', // Alinear el texto a la derecha del feature
+    offsetY: -31, // Ajustar la posición vertical del texto
+    offsetX: 10, // Ajustar la posición horizontal del texto
   }),
   zIndex: 1, // Establecer un zIndex mayor
-
 });
 
 export const createCircleStyle = () => {

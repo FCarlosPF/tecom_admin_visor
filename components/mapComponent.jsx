@@ -4,12 +4,13 @@ import "ol/ol.css";
 import { Feature, Map, View } from "ol";
 import { loadAndConfigureLayer } from "@/app/utils/mapUtils";
 import {
+  areasStyle,
   createCircleStyle,
   empleadoStyle,
   oficinaStyle,
 } from "@/app/utils/layerStyles";
-import { empleadosTitle, oficinaTitle } from "@/app/utils/layerTitles";
-import { getEmpleados, getOficina, getTasKToEmployee } from "@/services/index";
+import { areas, empleadosTitle, oficinaTitle } from "@/app/utils/layerTitles";
+import { getAreas, getEmpleados, getOficina, getTasKToEmployee } from "@/services/index";
 import { defaults, DoubleClickZoom } from "ol/interaction";
 import { defaults as defaultControls } from "ol/control";
 import TopBar from "./TopBar";
@@ -33,7 +34,7 @@ const MapComponent = () => {
     window.location.href = "http://localhost:3001/";
   };
 
-  const styleFunc = (feature) => {
+  const styleEmpleadoFunc = (feature) => {
     const style = empleadoStyle.clone();
     if (feature.get("nombre")) {
       const nombre = feature.get("nombre");
@@ -50,6 +51,30 @@ const MapComponent = () => {
       } else {
         style.getImage().getFill().setColor("#00FF00"); // Verde
       }
+    }
+    return style;
+  };
+
+  const styleAreaFunc = (feature) => {
+    const style = areasStyle.clone();
+    if (feature.get("nombre")) {
+      const nombre = feature.get("nombre");
+  
+      // Asegúrate de que el estilo tenga un objeto de texto
+      if (!style.getText()) {
+        style.setText(new ol.style.Text());
+      }
+  
+      style.getText().setText(`${nombre}`);
+  
+      // Cambiar el color del Stroke basado en el valor del nombre
+      if (nombre === "Desarrollo") {
+        style.getStroke().setColor("#00FF00"); // Verde
+      } else if (nombre === "Construcción") {
+        style.getStroke().setColor("red"); // Celeste
+      }else if (nombre === "Recursos Humanos") {
+        style.getStroke().setColor("#ff00bd"); // Celeste
+      } 
     }
     return style;
   };
@@ -89,8 +114,14 @@ const MapComponent = () => {
               dispatch({ type: "SET_EMPLEADOS", payload: empleadosData });
               return empleadosData;
             },
-            style: styleFunc,
+            style: styleEmpleadoFunc,
             title: empleadosTitle,
+            visible: true,
+          },
+          {
+            data: getAreas,
+            style: styleAreaFunc,
+            title: areas,
             visible: true,
           },
         ];
@@ -167,7 +198,7 @@ const MapComponent = () => {
           rol_id: empleado.rol_id,
           proyectos_ids: empleado.proyectos_ids,
         });
-        feature.setStyle(styleFunc(feature)); // Aplicar el estilo aquí
+        feature.setStyle(styleEmpleadoFunc(feature)); // Aplicar el estilo aquí
         source.addFeature(feature);
       });
     }
