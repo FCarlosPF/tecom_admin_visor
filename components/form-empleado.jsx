@@ -27,7 +27,7 @@ const FormEmpleado = forwardRef(({ employee, tasks, onClose }, ref) => {
   if (!employee) return null;
 
   return (
-    <Draggable nodeRef={formRef}>
+    <Draggable nodeRef={formRef} grid={[25, 25]} scale={1}>
       <div
         ref={formRef}
         className="fixed top-0 right-0 bg-white text-gray-800 p-6 rounded-lg shadow-xl w-96 m-4 z-50 transition-transform transform duration-300 ease-in-out"
@@ -156,5 +156,8 @@ const FormEmpleado = forwardRef(({ employee, tasks, onClose }, ref) => {
     </Draggable>
   );
 });
+
+FormEmpleado.displayName = "FormEmpleado";
+
 
 export default FormEmpleado;

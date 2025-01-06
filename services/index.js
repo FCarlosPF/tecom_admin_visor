@@ -75,7 +75,7 @@ export const logoutService = async () => {
 
 export const getOficina = async () => {
   try {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTUwMDcwLCJpYXQiOjE3MzU5MzIwNzAsImp0aSI6ImVjZTM2NTVlMWE4ZTQzZTY4ZDA4MWU4MTc2NGI2YTMzIiwidXNlcl9pZCI6MX0.__91ocbduagsx0StPhxaZ_R3IJ2k6LaYaOfpEhWlM6M';
+    const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
       `http://127.0.0.1:8000/api/oficinas/`,
       {
@@ -102,7 +102,7 @@ export const getOficina = async () => {
 
 export const getEmpleados = async () => {
   try {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTUwMDcwLCJpYXQiOjE3MzU5MzIwNzAsImp0aSI6ImVjZTM2NTVlMWE4ZTQzZTY4ZDA4MWU4MTc2NGI2YTMzIiwidXNlcl9pZCI6MX0.__91ocbduagsx0StPhxaZ_R3IJ2k6LaYaOfpEhWlM6M';
+    const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
       `http://127.0.0.1:8000/api/vista-empleados-tareas/`,
       {
@@ -131,7 +131,7 @@ export const getEmpleados = async () => {
 
 export const getTasKToEmployee = async (employeeId) => {
   try {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTUwMDcwLCJpYXQiOjE3MzU5MzIwNzAsImp0aSI6ImVjZTM2NTVlMWE4ZTQzZTY4ZDA4MWU4MTc2NGI2YTMzIiwidXNlcl9pZCI6MX0.__91ocbduagsx0StPhxaZ_R3IJ2k6LaYaOfpEhWlM6M';
+    const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
       `http://127.0.0.1:8000/api/tareas/empleado/${employeeId}/`,
       {
@@ -160,7 +160,7 @@ export const getTasKToEmployee = async (employeeId) => {
 
 export const getProyectos = async () => {
   try {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTUwMDcwLCJpYXQiOjE3MzU5MzIwNzAsImp0aSI6ImVjZTM2NTVlMWE4ZTQzZTY4ZDA4MWU4MTc2NGI2YTMzIiwidXNlcl9pZCI6MX0.__91ocbduagsx0StPhxaZ_R3IJ2k6LaYaOfpEhWlM6M';
+    const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(`http://127.0.0.1:8000/api/proyectos/`, {
       method: "GET",
       headers: {
@@ -183,7 +183,7 @@ export const getProyectos = async () => {
 
 export const getAreas= async () => {
   try {
-    const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTUwMDcwLCJpYXQiOjE3MzU5MzIwNzAsImp0aSI6ImVjZTM2NTVlMWE4ZTQzZTY4ZDA4MWU4MTc2NGI2YTMzIiwidXNlcl9pZCI6MX0.__91ocbduagsx0StPhxaZ_R3IJ2k6LaYaOfpEhWlM6M';
+    const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(`http://127.0.0.1:8000/api/areas/`, {
       method: "GET",
       headers: {
@@ -207,7 +207,7 @@ export const getAreas= async () => {
 
 export const descargarReporteExcel = async () => {
 
-  const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM1OTMxMTU4LCJpYXQiOjE3MzU5MTMxNTgsImp0aSI6ImNhOWYwZWQyMzdjYzQ5ZDRiN2ViZWE1YzQzZDI5YWZjIiwidXNlcl9pZCI6MX0.RS5GeV68sTGiJtMFfc6cHP-aOPWGGqMjCgmpGsO-_rE';
+  const accessToken = localStorage.getItem("accessToken");
 
   try {
     const response = await fetch(

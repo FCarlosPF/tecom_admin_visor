@@ -61,7 +61,6 @@ const Login = () => {
           rol: data.rol,
         };
         setUsuarioLogeado(usuario);
-        localStorage.setItem("usuarioLogeado", JSON.stringify(usuario));
         router.push("/panel");
       } else {
         setError("Credenciales incorrectas");

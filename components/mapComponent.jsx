@@ -73,8 +73,10 @@ const MapComponent = () => {
     }
     return style;
   };
+
   // Carga las capas y configura el mapa
   useEffect(() => {
+    console.log("MapComponent mounted");
     const fetchData = async () => {
       try {
         const map = new Map({
@@ -93,8 +95,6 @@ const MapComponent = () => {
         });
 
         mapInstanceRef.current = map; // Almacenar el objeto del mapa en la referencia
-
-
 
         const layerConfigs = [
           {
@@ -158,7 +158,7 @@ const MapComponent = () => {
     };
 
     fetchData();
-  }, [dispatch]);
+  }, []); // <-- Asegúrate de que este useEffect solo se ejecute una vez al montar el componente
 
   useEffect(() => {
     const filteredEmpleados = state.idProyecto
