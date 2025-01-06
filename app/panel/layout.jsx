@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext } from "react";
-import TopBar from "@/components/TopBar";
+import TopBar from "@/components/topBar";
 import NavBar from "@/components/navBar";
 import { GlobalContext } from "@/components/globalState";
 
