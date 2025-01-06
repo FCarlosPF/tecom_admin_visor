@@ -14,7 +14,7 @@ import { getAreas, getEmpleados, getOficina, getTasKToEmployee } from "@/service
 import { defaults } from "ol/interaction";
 import { defaults as defaultControls } from "ol/control";
 import { GlobalContext } from "./globalState";
-import FormEmpleado from "./formEmpleado";
+import FormEmpleado from "./FormEmpleado";
 import { Point } from "ol/geom";
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
