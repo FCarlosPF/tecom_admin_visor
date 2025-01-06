@@ -1,5 +1,5 @@
 import React from 'react'
-import MapComponent from '@/components/mapComponent'
+import MapComponent from '@/components/MapComponent'
 
 const Panel = () => {
   return (

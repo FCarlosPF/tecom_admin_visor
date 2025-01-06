@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { GlobalContext } from "./globalState";
+import { GlobalContext } from "./GlobalState";
 import { FaSignOutAlt } from "react-icons/fa";
 
 import { useRouter } from "next/navigation";

@@ -3,7 +3,7 @@
 import React, { useContext } from "react";
 import TopBar from "@/components/TopBar";
 import NavBar from "@/components/NavBar";
-import { GlobalContext } from "@/components/globalState";
+import { GlobalContext } from "@/components/GlobalState";
 
 const Layout = ({ children }) => {
   const { state, dispatch } = useContext(GlobalContext);

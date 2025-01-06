@@ -2,7 +2,7 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import { FaFileAlt, FaCog } from "react-icons/fa";
-import { GlobalContext } from "./globalState";
+import { GlobalContext } from "./GlobalState";
 import { descargarReporteExcel, getProyectos } from "@/services";
 
 const TopBar = ({ handleConfigClick }) => {
