@@ -29,11 +29,6 @@ const MapComponent = () => {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [employeeTasks, setEmployeeTasks] = useState([]);
 
-  // Maneja el clic en el botón de configuración
-  const handleConfigClick = () => {
-    window.location.href = "http://localhost:3001/";
-  };
-
   const styleEmpleadoFunc = (feature) => {
     const style = empleadoStyle.clone();
     if (feature.get("nombre")) {
@@ -59,22 +54,22 @@ const MapComponent = () => {
     const style = areasStyle.clone();
     if (feature.get("nombre")) {
       const nombre = feature.get("nombre");
-  
+
       // Asegúrate de que el estilo tenga un objeto de texto
       if (!style.getText()) {
         style.setText(new ol.style.Text());
       }
-  
+
       style.getText().setText(`${nombre}`);
-  
+
       // Cambiar el color del Stroke basado en el valor del nombre
       if (nombre === "Desarrollo") {
         style.getStroke().setColor("#00FF00"); // Verde
       } else if (nombre === "Construcción") {
         style.getStroke().setColor("red"); // Celeste
-      }else if (nombre === "Recursos Humanos") {
+      } else if (nombre === "Recursos Humanos") {
         style.getStroke().setColor("#ff00bd"); // Celeste
-      } 
+      }
     }
     return style;
   };
@@ -99,7 +94,7 @@ const MapComponent = () => {
 
         mapInstanceRef.current = map; // Almacenar el objeto del mapa en la referencia
 
-        
+
 
         const layerConfigs = [
           {
@@ -168,8 +163,8 @@ const MapComponent = () => {
   useEffect(() => {
     const filteredEmpleados = state.idProyecto
       ? empleados.filter((empleado) =>
-          empleado.proyectos_ids.includes(parseInt(state.idProyecto))
-        )
+        empleado.proyectos_ids.includes(parseInt(state.idProyecto))
+      )
       : empleados;
 
     const empleadosLayer = layers.find(
@@ -184,7 +179,7 @@ const MapComponent = () => {
           geometry: new Point(empleado.geom.coordinates),
           nombre: empleado.nombre,
           apellidos: empleado.apellidos,
-          cantidad_tareas_pendientes_o_en_progreso:empleado.cantidad_tareas_pendientes_o_en_progreso,
+          cantidad_tareas_pendientes_o_en_progreso: empleado.cantidad_tareas_pendientes_o_en_progreso,
           id_empleado: empleado.id_empleado,
           correo: empleado.correo,
           especialidad: empleado.especialidad,
@@ -259,23 +254,17 @@ const MapComponent = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen flex flex-col">
-      <TopBar handleConfigClick={handleConfigClick} />
-      <div className="flex flex-row h-full">
-        <NavBar />
-        <div className="relative w-full h-full">
-          <div
-            ref={mapRef}
-            className="w-full h-full bg-black"
-            style={{ paddingTop: "3rem" }}
-          />
-          <FormEmpleado
-            employee={selectedEmployee}
-            tasks={employeeTasks}
-            onClose={() => setSelectedEmployee(null)}
-          />
-        </div>
-      </div>
+    <div className="relative w-full h-full">
+      <div
+        ref={mapRef}
+        className="w-full h-full bg-black"
+        style={{ paddingTop: "3rem" }}
+      />
+      <FormEmpleado
+        employee={selectedEmployee}
+        tasks={employeeTasks}
+        onClose={() => setSelectedEmployee(null)}
+      />
     </div>
   );
 };

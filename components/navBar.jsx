@@ -1,11 +1,19 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "./globalState";
+import { FaSignOutAlt } from "react-icons/fa";
+
+import { useRouter } from "next/navigation";
+import { logoutService } from "@/services/index";
+import useStore from "@/store/index";
 
 const NavBar = () => {
   const { state, dispatch } = useContext(GlobalContext);
   const { layers } = state;
   const [visibleLayers, setVisibleLayers] = useState([]);
   const [isExpanded, setIsExpanded] = useState(true); // Controla el desplegable de "Oficina"
+
+  const router = useRouter();
+  const { usuarioLogeado, setUsuarioLogeado } = useStore();
 
   const toggleLayerVisibility = (layerTitle, visibility) => {
     dispatch({ type: "TOGGLE_LAYER_VISIBILITY", payload: { layerTitle, visibility } });
@@ -14,6 +22,24 @@ const NavBar = () => {
   useEffect(() => {
     setVisibleLayers(layers);
   }, [layers]);
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("usuarioLogeado"));
+    if (storedUser) {
+      setUsuarioLogeado(storedUser);
+    }
+  }, [setUsuarioLogeado]);
+
+  const handleLogout = async () => {
+    try {
+      await logoutService();
+      localStorage.removeItem("usuarioLogeado");
+      setUsuarioLogeado(null);
+      router.push("/");
+    } catch (error) {
+      console.error("Error al cerrar sesión:", error);
+    }
+  };
 
   return (
     <div className="bg-white text-gray-900 p-4 flex flex-col w-64 h-full shadow-md border border-gray-200">
@@ -68,8 +94,18 @@ const NavBar = () => {
           </div>
         )}
       </div>
+      <div className="p-4 fixed bottom-0 left-0 w-auto">
+        <button
+          onClick={handleLogout}
+          className="flex items-center p-3 rounded-lg shadow-lg border border-gray-300 text-gray-700 hover:bg-gray-600 hover:text-white hover:shadow-xl transition w-full"
+        >
+          <FaSignOutAlt className="mr-2" />
+          <span className="hidden md:inline">Cerrar Sesión</span>
+        </button>
+      </div>
+
     </div>
-    
+
   );
 };
 
