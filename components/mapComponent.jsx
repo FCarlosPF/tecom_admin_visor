@@ -11,10 +11,8 @@ import {
 } from "@/app/utils/layerStyles";
 import { areas, empleadosTitle, oficinaTitle } from "@/app/utils/layerTitles";
 import { getAreas, getEmpleados, getOficina, getTasKToEmployee } from "@/services/index";
-import { defaults, DoubleClickZoom } from "ol/interaction";
+import { defaults } from "ol/interaction";
 import { defaults as defaultControls } from "ol/control";
-import TopBar from "./TopBar";
-import NavBar from "./navBar";
 import { GlobalContext } from "./globalState";
 import FormEmpleado from "./form-empleado";
 import { Point } from "ol/geom";
