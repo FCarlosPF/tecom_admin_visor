@@ -1,4 +1,4 @@
-import { GlobalProvider } from "@/components/GlobalState";
+import { GlobalProvider } from "@/components/globalState";
 import "./globals.css";
 
 export const metadata = {

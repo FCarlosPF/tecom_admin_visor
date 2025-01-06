@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useContext } from "react";
-import TopBar from "@/components/TopBar";
-import NavBar from "@/components/NavBar";
-import { GlobalContext } from "@/components/GlobalState";
+import TopBar from "@/components/topBar";
+import NavBar from "@/components/navBar";
+import { GlobalContext } from "@/components/globalState";
 
 const Layout = ({ children }) => {
   const { state, dispatch } = useContext(GlobalContext);
