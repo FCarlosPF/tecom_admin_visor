@@ -13,6 +13,9 @@ const ParticlesMemo = React.memo(({ options, particlesLoaded }) => (
   <Particles id="tsparticles" particlesLoaded={particlesLoaded} options={options} />
 ));
 
+ParticlesMemo.displayName = "ParticlesMemo";
+
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -230,5 +233,8 @@ const Login = () => {
     </div>
   );
 };
+
+Login.displayName = "Login";
+
 
 export default Login;

@@ -1,6 +1,13 @@
-import React, { useEffect, useRef, forwardRef, useImperativeHandle, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  forwardRef,
+  useImperativeHandle,
+  useState,
+} from "react";
 import Draggable from "react-draggable";
 import { format } from "date-fns"; // Importamos el formato de fecha
+import Image from "next/image";
 
 const FormEmpleado = forwardRef(({ employee, tasks, onClose }, ref) => {
   const formRef = useRef(null);
@@ -108,10 +115,12 @@ const FormEmpleado = forwardRef(({ employee, tasks, onClose }, ref) => {
                 <label className="font-semibold text-sm text-gray-700">
                   Foto:
                 </label>
-                <img
+                <Image
                   src={employee.foto}
-                  alt="Foto del empleado"
-                  className="rounded-lg w-full h-48 object-cover mt-2"
+                  alt="Employee Photo"
+                  width={200}
+                  height={200}
+                  className="w-full h-auto object-cover rounded-lg shadow-lg"
                 />
               </div>
             )}
@@ -158,6 +167,5 @@ const FormEmpleado = forwardRef(({ employee, tasks, onClose }, ref) => {
 });
 
 FormEmpleado.displayName = "FormEmpleado";
-
 
 export default FormEmpleado;

@@ -158,7 +158,7 @@ const MapComponent = () => {
     };
 
     fetchData();
-  }, []); // <-- Asegúrate de que este useEffect solo se ejecute una vez al montar el componente
+  }, []); // <-- Asegúrate de incluir todas las dependencias necesarias
 
   useEffect(() => {
     const filteredEmpleados = state.idProyecto
