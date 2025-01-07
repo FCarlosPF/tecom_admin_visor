@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
 
  // Maneja el clic en el botón de configuración
    const handleConfigClick = () => {
-     window.location.href = "http://localhost:3001/";
+     window.location.href = "http://localhost:3001";
    };
  
 

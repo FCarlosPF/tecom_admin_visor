@@ -238,3 +238,37 @@ export const descargarReporteExcel = async () => {
     console.error("Error al descargar el reporte:", error);
   }
 };
+
+export const descargarReportePendienteExcel = async () => {
+
+  const accessToken = localStorage.getItem("accessToken");
+
+  try {
+    const response = await fetch(
+      "http://127.0.0.1:8000/api/reporte-tareas-pendiente-en-progreso/",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type":
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          Authorization: `Bearer ${accessToken}`, // Incluye el token de acceso en los encabezados
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error("Error al descargar el reporte");
+    }
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "reporte-tareas-pendientes-en-progreso.xlsx";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  } catch (error) {
+    console.error("Error al descargar el reporte:", error);
+  }
+};

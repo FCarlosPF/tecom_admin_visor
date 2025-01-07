@@ -3,7 +3,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FaFileAlt, FaCog } from "react-icons/fa";
 import { GlobalContext } from "./globalState";
-import { descargarReporteExcel, getProyectos } from "@/services";
+import { descargarReporteExcel, descargarReportePendienteExcel, getProyectos } from "@/services";
 
 const TopBar = ({ handleConfigClick }) => {
   const { state, dispatch } = useContext(GlobalContext);
@@ -12,6 +12,7 @@ const TopBar = ({ handleConfigClick }) => {
   const [proyectos, setProyectos] = useState([]);
   const [loadingProyectos, setLoadingProyectos] = useState(false);
   const [selectedProyectoId, setSelectedProyectoId] = useState("");
+  const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   useEffect(() => {
     const fetchProyectos = async () => {
@@ -43,10 +44,15 @@ const TopBar = ({ handleConfigClick }) => {
     }
   };
 
-  const handleReportClick = async () => {
+  const handleReportClick = async (type) => {
     try {
-      await descargarReporteExcel();
-      console.log("Reporte descargado con éxito.");
+      if (type === "excel") {
+        await descargarReporteExcel();
+        console.log("Reporte descargado con éxito.");
+      } else if (type === "tareasTardes") {
+        await descargarReportePendienteExcel();
+        console.log("Reporte de tareas tardías descargado con éxito.");
+      }
     } catch (error) {
       console.error("Error al descargar el reporte:", error);
     }
@@ -73,13 +79,37 @@ const TopBar = ({ handleConfigClick }) => {
           <span>Cargando capa: {loadingLayerName}</span>
         </div>
       )}
-      <button
-        onClick={handleReportClick}
-        className="ml-2 bg-gray-700 text-white p-3 me-4 rounded cursor-pointer text-lg"
-        style={{ fontSize: "1.5rem" }}
+      <div
+        className="relative ml-4"
+        onMouseEnter={() => setDropdownVisible(true)}
+        onMouseLeave={() => setDropdownVisible(false)}
       >
-        <FaFileAlt size={24} />
-      </button>
+        <button
+          className="bg-gray-700 text-white p-3 me-4 mb-1 rounded cursor-pointer text-lg"
+          style={{ fontSize: "1.5rem", marginRight: "30px" }}
+        >
+          <FaFileAlt size={24} />
+        </button>
+        {isDropdownVisible && (
+          <div className="absolute top-full left-0 bg-gray-700 text-white border border-gray-600 rounded-md mt-0 z-10 p-1">
+            <p className="text-center text-gray-400 border-b border-gray-600 select-none">Reportes</p>
+            <ul className="text-sm">
+              <li
+                className="px-4 py-2 hover:bg-gray-600 cursor-pointer rounded text-center"
+                onClick={() => handleReportClick("excel")}
+              >
+                No entregadas
+              </li>
+              <li
+                className="px-4 py-2 hover:bg-gray-600 cursor-pointer rounded text-center"
+                onClick={() => handleReportClick("tareasTardes")}
+              >
+                Pendientes
+              </li>
+            </ul>
+          </div>
+        )}
+      </div>
       <button
         onClick={handleConfigClick}
         className="ml-2 bg-gray-700 text-white p-3 rounded text-lg"
