@@ -38,6 +38,11 @@ const reducer = (state, action) => {
       return { ...state, idProyecto: action.payload };
     case "SET_ID_RESPONSABLE_PROYECTO":
       return { ...state, idResponsableProyecto: action.payload };
+    case "CLEAR_LAYERS":
+      return {
+        ...state,
+        layers: [],
+      };
     default:
       return state;
   }

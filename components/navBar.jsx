@@ -35,6 +35,7 @@ const NavBar = () => {
       await logoutService();
       localStorage.removeItem("usuarioLogeado");
       setUsuarioLogeado(null);
+      dispatch({ type: "CLEAR_LAYERS" });
       router.push("/");
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
