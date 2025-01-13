@@ -4,9 +4,9 @@ services:
   nextjs-visor-frontend:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-front-visor
     ports:
-      - "3001:3000"
+      - "3001:3001"
     volumes:
       - .:/app
       - /app/node_modules
