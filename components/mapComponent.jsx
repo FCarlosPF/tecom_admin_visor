@@ -173,26 +173,28 @@ const MapComponent = () => {
       const source = empleadosLayer.getSource();
       source.clear();
       filteredEmpleados.forEach((empleado) => {
-        const feature = new Feature({
-          geometry: new Point(empleado.geom.coordinates),
-          nombre: empleado.nombre,
-          apellidos: empleado.apellidos,
-          cantidad_tareas_pendientes_o_en_progreso: empleado.cantidad_tareas_pendientes_o_en_progreso,
-          id_empleado: empleado.id_empleado,
-          correo: empleado.correo,
-          especialidad: empleado.especialidad,
-          sueldo: empleado.sueldo,
-          activo: empleado.activo,
-          foto: empleado.foto,
-          nombre_usuario: empleado.nombre_usuario,
-          contrasenia: empleado.contrasenia,
-          fecha_contratacion: empleado.fecha_contratacion,
-          area_id: empleado.area_id,
-          rol_id: empleado.rol_id,
-          proyectos_ids: empleado.proyectos_ids,
-        });
-        feature.setStyle(styleEmpleadoFunc(feature)); // Aplicar el estilo aquí
-        source.addFeature(feature);
+        if (empleado.geom && empleado.geom.coordinates) {
+          const feature = new Feature({
+            geometry: new Point(empleado.geom.coordinates),
+            nombre: empleado.nombre,
+            apellidos: empleado.apellidos,
+            cantidad_tareas_pendientes_o_en_progreso: empleado.cantidad_tareas_pendientes_o_en_progreso,
+            id_empleado: empleado.id_empleado,
+            correo: empleado.correo,
+            especialidad: empleado.especialidad,
+            sueldo: empleado.sueldo,
+            activo: empleado.activo,
+            foto: empleado.foto,
+            nombre_usuario: empleado.nombre_usuario,
+            contrasenia: empleado.contrasenia,
+            fecha_contratacion: empleado.fecha_contratacion,
+            area_id: empleado.area_id,
+            rol_id: empleado.rol_id,
+            proyectos_ids: empleado.proyectos_ids,
+          });
+          feature.setStyle(styleEmpleadoFunc(feature)); // Aplicar el estilo aquí
+          source.addFeature(feature);
+        }
       });
     }
   }, [state.idProyecto, layers, empleados, state.idResponsableProyecto]);
