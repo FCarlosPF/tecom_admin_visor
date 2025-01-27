@@ -10,7 +10,7 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-    environment:
-      NODE_ENV: production
+    env_file:
+      - .env.production
     stdin_open: true
     tty: true

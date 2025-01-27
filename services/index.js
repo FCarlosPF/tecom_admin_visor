@@ -1,6 +1,6 @@
 export const loginService = async (username, password) => {
   try {
-    const response = await fetch("http://127.0.0.1:8000/api/login/", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/login/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +31,7 @@ export const changePasswordService = async (oldPassword, newPassword) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
 
-    const response = await fetch("http://127.0.0.1:8000/api/change-password/", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/change-password/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ export const getOficina = async () => {
   try {
     const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
-      `http://127.0.0.1:8000/api/oficinas/`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/oficinas/`,
       {
         method: "GET",
         headers: {
@@ -104,7 +104,7 @@ export const getEmpleados = async () => {
   try {
     const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
-      `http://127.0.0.1:8000/api/vista-empleados-tareas/`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/vista-empleados-tareas/`,
       {
         method: "GET",
         headers: {
@@ -133,7 +133,7 @@ export const getTasKToEmployee = async (employeeId) => {
   try {
     const accessToken = localStorage.getItem("accessToken");
     const response = await fetch(
-      `http://127.0.0.1:8000/api/tareas/empleado/${employeeId}/`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/tareas/empleado/${employeeId}/`,
       {
         method: "GET",
         headers: {
@@ -161,7 +161,7 @@ export const getTasKToEmployee = async (employeeId) => {
 export const getProyectos = async () => {
   try {
     const accessToken = localStorage.getItem("accessToken");
-    const response = await fetch(`http://127.0.0.1:8000/api/proyectos/`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/proyectos/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -184,7 +184,7 @@ export const getProyectos = async () => {
 export const getAreas= async () => {
   try {
     const accessToken = localStorage.getItem("accessToken");
-    const response = await fetch(`http://127.0.0.1:8000/api/areas/`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/areas/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -211,7 +211,7 @@ export const descargarReporteExcel = async () => {
 
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/reporte-tareas-no-entregadas-a-tiempo/",
+      "${process.env.NEXT_PUBLIC_BACKEND_URL}/reporte-tareas-no-entregadas-a-tiempo/",
       {
         method: "GET",
         headers: {
@@ -245,7 +245,7 @@ export const descargarReportePendienteExcel = async () => {
 
   try {
     const response = await fetch(
-      "http://127.0.0.1:8000/api/reporte-tareas-pendiente-en-progreso/",
+      "${process.env.NEXT_PUBLIC_BACKEND_URL}/reporte-tareas-pendiente-en-progreso/",
       {
         method: "GET",
         headers: {
