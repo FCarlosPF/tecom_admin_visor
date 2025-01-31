@@ -33,7 +33,7 @@ const Login2 = () => {
     const storedUser = localStorage.getItem("usuarioLogeado");
     if (storedUser) {
       setUsuarioLogeado(JSON.parse(storedUser));
-      router.push("/panel");
+      router.push("/plano/panel");
     }
   }, [setUsuarioLogeado, router]);
 
@@ -44,7 +44,7 @@ const Login2 = () => {
       const data = await loginService(username, password);
       if (data) {
         setUsuarioLogeado(data);
-        router.push("/panel");
+        router.push("/plano/panel");
       } else {
         setError("Credenciales incorrectas");
       }
