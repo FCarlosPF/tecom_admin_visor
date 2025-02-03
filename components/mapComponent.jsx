@@ -31,15 +31,17 @@ const MapComponent = () => {
     const style = empleadoStyle.clone();
     if (feature.get("nombre")) {
       const nombre = feature.get("nombre");
-      const cantidadTareas = feature.get(
+      const cantidadTareasPendientes = feature.get(
         "cantidad_tareas_pendientes_o_en_progreso"
       );
-      style.getText().setText(`${nombre}\n (${cantidadTareas})`);
+      const cantidadTareasCompletadas= feature.get("cantidad_tareas_completadas");
 
+      style.getText().setText(`${nombre}\n (${cantidadTareasPendientes}/${cantidadTareasCompletadas})`);
+      console.log(cantidadTareasCompletadas)
       // Cambiar el color del punto basado en la cantidad de tareas
       if (feature.get("id_empleado") === state.idResponsableProyecto) {
         style.getImage().getFill().setColor("#FFA500"); // Naranja
-      } else if (cantidadTareas != 0) {
+      } else if (cantidadTareasPendientes != 0) {
         style.getImage().getFill().setColor("#FF0000"); // Rojo
       } else {
         style.getImage().getFill().setColor("#00FF00"); // Verde
@@ -179,6 +181,7 @@ const MapComponent = () => {
             nombre: empleado.nombre,
             apellidos: empleado.apellidos,
             cantidad_tareas_pendientes_o_en_progreso: empleado.cantidad_tareas_pendientes_o_en_progreso,
+            cantidad_tareas_completadas: empleado.cantidad_tareas_completadas,
             id_empleado: empleado.id_empleado,
             correo: empleado.correo,
             especialidad: empleado.especialidad,

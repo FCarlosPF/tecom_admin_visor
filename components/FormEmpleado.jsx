@@ -96,20 +96,14 @@ const FormEmpleado = forwardRef(({ employee, tasks, onClose }, ref) => {
                 {employee.especialidad}
               </span>
             </div>
-            <div>
-              <label className="font-semibold text-sm text-gray-700">
-                Sueldo:
-              </label>
-              <span className="block text-gray-800">{employee.sueldo}</span>
-            </div>
-            <div>
+{/*             <div>
               <label className="font-semibold text-sm text-gray-700">
                 Fecha de Contratación:
               </label>
               <span className="block text-gray-800">
                 {employee.fecha_contratacion}
               </span>
-            </div>
+            </div> */}
             {employee.foto && (
               <div>
                 <label className="font-semibold text-sm text-gray-700">
